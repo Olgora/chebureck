@@ -1,0 +1,228 @@
+.main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: center;
+   
+}
+
+.image {
+  object-fit: cover;
+}
+
+.info {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-en;
+  gap: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  margin-top: 2rem;
+  font-size: clamp(3rem, 5vw, 56px);
+  letter-spacing: 4px;
+  padding: 0;
+  line-height: 6rem;
+  color: white;
+  text-align: end;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgb(46, 44, 44);
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+.adress {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+
+  border-left: 3px solid #a7e0a2; /* Мятная черта слева */
+  padding-left: 35px;
+}
+
+.hoursItem {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  color: rgb(49, 48, 48);
+  font-size: 1.2rem;
+  gap: 1.5rem;
+  height: 2.5rem;
+}
+
+.hoursItemT {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Стили плашки статуса */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  transform: rotate(1deg);
+}
+
+.open {
+  color: #a7e0a2; /* Мятный */
+}
+
+.closed {
+  background: #ef4444; /* Красный */
+  color: #fff;
+  width: 100%;
+}
+
+.close {
+  background: #ef4444; /* Красный */
+  color: #fff;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+/* Пульсирующая точка внутри плашки */
+.dot {
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+.comicCard {
+  width: 470px;
+  height: 550px;
+  background: #f4f1ea;
+  border: 3px solid #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+  align-self: center;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(66, 66, 66, 0.9);
+}
+
+.imageContainer {
+  width: 100%;
+  background-color: #262220;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+@media (max-width: 1000px) {
+  .comicCard {
+    width: 370px;
+    height: 450px;
+  }
+
+  .hoursList {
+    padding-left: 20px;
+  }
+
+  .hoursItem {
+    grid-template-columns: 5fr 30px 5px 25px 1px;
+  }
+}
+
+@media (max-width: 860px) {
+  .grid {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    align-items: center;
+    justify-content: center;
+     
+  }
+
+  .hoursList {
+    display: flex;
+    flex-direction: column;
+    border-left: 0px solid #a7e0a2; /* Мятная черта слева */
+    padding-left: 0px;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .hoursList {
+    display: flex;
+    flex-direction: column;
+    border-left: 0px solid #a7e0a2; /* Мятная черта слева */
+    padding-left: 0px;
+    font-size: 1.0rem;
+    gap: 0.2rem;
+  }
+
+  .comicCard {
+    width: 310px;
+    height: 400px;
+     background: #f4f1ea;
+  border: 3px solid #fff;
+  border-radius: 4px;
+  padding: 0.6rem;
+  
+  }
+}

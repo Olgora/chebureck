@@ -1,0 +1,18 @@
+.hidden {
+  opacity: 0;
+  /* На старте сжимаем блок в точку в центре (0.8 от реального размера) */
+  transform: scale3d(0.8, 0.8, 1);
+  /* Задаем точку, из которой пойдет разворачивание — строго центр */
+  transform-origin: center center;
+  
+  /* Плавный тайминг для эффекта взрыва/разворота */
+  transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
+}
+
+.visible {
+  opacity: 1;
+  /* Разворачиваем в полноценный 100% размер */
+  transform: scale3d(1, 1, 1);
+}

@@ -1,0 +1,20 @@
+.iconsvg {
+  transition: 0.1s ease-in-out;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.iconsvg:hover {
+  /*stroke: var(--green)  ;*/
+  fill: var(--green);
+  color: var(--green);
+}
+
+.iconsvgcart {
+  transition: 0.1s ease-in-out;
+  margin: 0;
+  padding: 0;
+  
+  
+}

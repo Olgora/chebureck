@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  position: relative;
+  /* Мягкие края (по желанию) 
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);*/
+}
+
+.ticker {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 120vw;
+}
+
+/* Стили для обертки каждого переданного элемента */
+.item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

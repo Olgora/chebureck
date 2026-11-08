@@ -1,0 +1,52 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.piece {
+  position: absolute;
+  animation: float var(--duration, 10s) ease-in-out var(--delay, 0s) infinite;
+  will-change: transform;
+}
+
+.image {
+  object-fit: contain;
+  filter: grayscale(0.15);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px)
+      rotate(calc(var(--base-rotate, 0deg) + (-4deg * var(--rotate-dir, 1))));
+  }
+  50% {
+    transform: translateY(-18px)
+      rotate(calc(var(--base-rotate, 0deg) + (4deg * var(--rotate-dir, 1))));
+  }
+  100% {
+    transform: translateY(0px)
+      rotate(calc(var(--base-rotate, 0deg) + (-4deg * var(--rotate-dir, 1))));
+  }
+}
+
+/* На узких экранах прячем "лишние" куски — их и так не 4, а сколько передали
+   через count, поэтому индексы считаем от конца списка пропсов, а не жёстко.
+   Проще всего — просто не показывать больше 3 штук на мобильном. */
+@media (max-width: 640px) {
+  .piece:nth-child(n + 4) {
+    display: none;
+  }
+
+  .piece {
+    animation-duration: calc(var(--duration, 10s) * 0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    animation: none;
+  }
+}

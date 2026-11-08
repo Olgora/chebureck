@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  min-height: 140px; /* Высота с запасом для изгиба волны */
+  display: flex;
+  align-items: center;
+    /* Мягкие края (по желанию) */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+   
+}
+
+.char {
+  position: absolute;
+  padding: 0;
+  margin: 0 ;
+  top: 50%;
+  will-change: transform;
+  display: inline-block;
+  font-kerning: none; /* Отключаем динамический кернинг для точного расчета */
+ 
+  color: rgb(59, 58, 58);
+  font-size: 3rem;
+}

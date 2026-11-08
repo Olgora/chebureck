@@ -1,0 +1,45 @@
+.main {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  line-height: 20vh;
+  position: relative;
+  background-color: black;
+}
+
+.str {
+  font-size: 10vh;
+  font-weight: 700;
+  text-align: left;
+  color:white;
+  
+}
+
+.fixe {
+  position: absolute;
+  font-size: 10vh;
+  font-weight: 700;
+  text-align: left;
+  left: 0;
+  top: 0;
+  color:grey;
+}
+
+.scroll-line {
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+.sharp-letter {
+  display: inline-block;
+  /* изначально полностью скрыто */
+  clip-path: inset( 0% 100% 0% 0%);
+  will-change: clip-path;
+  backface-visibility: hidden;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  transition: none;
+}

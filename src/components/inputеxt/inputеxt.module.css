@@ -1,0 +1,43 @@
+.main {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: text;
+  pointer-events: none;
+  
+  /* Исходное положение лейбла — ровно внутри инпута */
+  top: 10px; 
+  opacity: 1;
+  
+  /* Плавный переход для всех свойств */
+  transition: top 0.25s ease-in-out, font-size 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+/* 
+  Если инпут внутри контейнера .main сфокусирован, 
+  ИЛИ автозаполнен браузером, 
+  ИЛИ уже содержит внутри себя текст (т.е. плейсхолдер скрыт):
+  -> поднимаем лейбл наверх!
+*/
+.main:has(.userBox:focus) .label,
+.main:has(.userBox:-webkit-autofill) .label,
+.main:has(.userBox:not(:placeholder-shown)) .label {
+  top: -16px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Хак, побеждающий дефолтную синеву/желтизну автозаполнения Chrome/Safari */
+.userBox:-webkit-autofill,
+.userBox:-webkit-autofill:hover, 
+.userBox:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: currentColor !important; 
+}

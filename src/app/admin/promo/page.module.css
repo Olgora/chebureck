@@ -1,0 +1,67 @@
+/* Добавь это в src/app/admin/promos/admin.module.css */
+
+.rowSplit {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.activeList {
+  margin-top: 1.5rem;
+  border-top: 2px dashed #444;
+  padding-top: 1rem;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #262220;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.itemTitle {
+  font-weight: 900;
+  color: #fff;
+}
+
+.itemSub {
+  font-size: 0.8rem;
+  color: #a8a29e;
+}
+
+.deleteButton {
+  background: #ef4444; /* Красный брутальный */
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.3rem 0.6rem;
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.deleteButton:hover {
+  background: #fff;
+  color: #ef4444;
+}
+
+.badgeActive {
+  color: #a7e0a2;
+  font-weight: bold;
+}
+.badgeInactive {
+  color: #ef4444;
+  font-weight: bold;
+}

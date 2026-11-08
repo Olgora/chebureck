@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cheburek-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Подключение к вашей работающей локальной базе данных:
+      - DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:5432/cheburek?schema=public

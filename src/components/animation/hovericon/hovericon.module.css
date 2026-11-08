@@ -1,0 +1,46 @@
+.hovericon {
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.textwrapper {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+}
+
+
+
+.textmain {
+  transform: translateY(0);
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.textfaded {
+  transform: translateY(100%);
+  opacity: 0.4;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.hovericon:hover .textmain {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.hovericon:hover .textfaded {
+  transform: translateY(0);
+  opacity: 0.4;
+}

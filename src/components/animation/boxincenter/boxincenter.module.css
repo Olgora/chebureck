@@ -1,0 +1,59 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Важно: чтобы оверлей не вылетал за границы при расширении */  
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* При ховере на карточку можно слегка увеличить саму картинку для пущей динамики */
+.container:hover .image {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 10, 9, 0.45); /* Твой темный полупрозрачный фон */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  
+  /* 🌟 Изначально сжимаем оверлей в невидимую точку в центре */
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center;
+  
+  /* Плавный сочный переход для взрыва */
+  transition: transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.3s ease;
+}
+
+/* 🔥 Триггер ховера: разворачиваем из точки на 100% размера */
+.container:hover .overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.title {
+  color: #a7e0a2; /* Твой фирменный мятный для контраста */
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}

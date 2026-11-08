@@ -1,0 +1,100 @@
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+ 
+}
+
+.block {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  z-index: -5;
+  background-color: beige;
+}
+
+
+.blockl {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 50;
+  position: relative;
+  top: -10px;
+}
+
+
+.line {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  color: aliceblue;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 10;
+  background-color: rgb(221, 133, 18);
+  background: brown;
+  padding: 20px;
+  clip-path: polygon(
+    0% 10%,
+    5% 0%,
+    10% 10%,
+    15% 0%,
+    20% 10%,
+    25% 0%,
+    30% 10%,
+    35% 0%,
+    40% 10%,
+    45% 0%,
+    50% 10%,
+    55% 0%,
+    60% 10%,
+    65% 0%,
+    70% 10%,
+    75% 0%,
+    80% 10%,
+    85% 0%,
+    90% 10%,
+    95% 0%,
+    100% 10%,
+    100% 90%,
+    95% 100%,
+    90% 90%,
+    85% 100%,
+    80% 90%,
+    75% 100%,
+    70% 90%,
+    65% 100%,
+    60% 90%,
+    55% 100%,
+    50% 90%,
+    45% 100%,
+    40% 90%,
+    35% 100%,
+    30% 90%,
+    25% 100%,
+    20% 90%,
+    15% 100%,
+    10% 90%,
+    5% 100%,
+    0% 90%
+  );
+}
+ 
+.container {
+  margin: 0;
+  padding: 40px;
+  width: 100%;
+  height: auto;
+
+   
+  /*border-color: aqua;
+  border-width: 3px;
+  border-style: solid;*/
+}

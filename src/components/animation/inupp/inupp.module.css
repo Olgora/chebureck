@@ -1,0 +1,14 @@
+.hidden {
+  opacity: 0;
+  /* Смещаем блок вниз на 30 пикселей перед появлением */
+  transform: translate3d(0, 100px, 0);
+  transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1),
+              transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+}
+
+.visible {
+  opacity: 1;
+  /* Возвращаем в исходную точку */
+  transform: translate3d(0, 0, 0);
+}

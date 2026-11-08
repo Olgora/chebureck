@@ -1,0 +1,15 @@
+.stickyCart {
+  position: fixed;
+  right: 2rem;
+  width: 550px;
+  z-index: 40;
+  display: none;
+  will-change: transform;
+ 
+}
+
+@media (min-width: 1024px) {
+  .stickyCart {
+    display: block;
+  }
+}

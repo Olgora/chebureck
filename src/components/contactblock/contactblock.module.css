@@ -1,0 +1,185 @@
+/* Контейнер всего блока контактов */
+.wrapper {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+ background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 3rem 1.5rem;
+    padding-bottom: 0px;
+  }
+}
+
+.slideritem {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+
+/* Основная сетка: Текст + Карта */
+.container {
+  max-width: 1200px; /* max-w-6xl */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    /* 🌟 Защитная зона: сдвигаем весь контент подвала влево, 
+       чтобы он не залезал под крутящуюся кнопку меню */
+  }
+}
+
+/* Левая сторона: Список текстовых блоков */
+.infoSide {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: #131212; /* text-stone-200 */
+}
+
+/* Отдельный информационный блок */
+.block {
+  display: flex;
+  flex-direction: column;
+  color: #e7e5e4; /* text-stone-200 */
+  font-size: 1.2rem;
+  line-height: 4rem;
+}
+
+/* Заголовки разделов мелом */
+.title {
+  /*color: #a7e0a2; /* Фирменный зелёный */
+  color: #262220;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 900;
+  text-transform: uppercase;
+
+  margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+/* Обычный текст */
+.text {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.625;
+}
+
+/* Контейнер интерактивной карты Google */
+.mapWrapper {
+  width: 100%;
+  height: 450px;
+  border-radius: 5px; /* rounded-2xl */
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* shadow-2xl */
+  border: 1px solid rgba(41, 37, 36, 0.8); /* border-stone-800/80 */
+}
+
+.link {
+  margin: 0px;
+  padding: 0;
+  margin-right: 20px;
+}
+
+/* Нижняя строчка с копирайтом */
+.bottomBar {
+  margin: 0;
+  margin-left: 4rem;
+  
+  margin-top: 20px;
+  color: #b9b7b5;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+ 
+}
+.comicCard {
+  width: 470px;
+  height: 500px;
+  position: relative;
+  background: #f4f1ea;
+  border: 3px solid #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(66, 66, 66, 0.9);
+}
+
+.imageContainer {
+  width: 100%;
+  background-color: #262220;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+  color: #e7e5e4;
+  padding-left: 35px;
+  align-self: center;
+  margin: auto;
+}
+
+.hoursItem {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  color: rgb(226, 224, 224);
+  font-size: 1.2rem;
+  gap: 1.5rem;
+  height: 3rem;
+}
+
+.hoursItemT {
+  color: #fffdfd;
+  text-decoration: underline;
+}
+
+.close {
+  background: #ef4444; /* Красный */
+  margin: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: justify;
+  color: #fff;
+  width: 100%;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .bottomBar {
+    padding-right: 160px; /* Копирайт тоже не лезет под крутилку */
+  }
+}

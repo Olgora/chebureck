@@ -1,0 +1,63 @@
+.btn {
+  position: relative;
+  padding: 2px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+ 
+}
+
+/* круг */
+.inner {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* слои */
+.top,
+.bottom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.top {
+  border: 2px black solid;
+  border-radius: 20px;
+  margin: 5px;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10;
+ 
+}
+/* верх */
+
+/* низ */
+.bottom {
+  transform: translateY(100%);
+  border-radius: 20px;
+  z-index: 9;
+   
+}
+
+
+.btn:hover .bottom {
+  transform: translateY(0);
+  
+}
+
+.btn:hover .tooltip {
+  transform: translate(-50%, -10px);
+  opacity: 1;
+}
+
+

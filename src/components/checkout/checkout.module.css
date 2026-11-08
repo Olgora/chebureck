@@ -1,0 +1,62 @@
+.main {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.block {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.box {
+  margin: 0;
+  padding: 0;
+  width: 50%;
+   
+}
+.error{
+  margin: 0;
+  padding: 0;
+  color: #ce742b;
+  text-transform: uppercase;
+}
+.radio{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgb(25, 26, 25);
+  border-radius: 50%;
+  background: transparent;
+  display: grid;
+  place-content: center;
+}
+
+.radio::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 0.15s ease-in-out;
+  background: rgb(8, 8, 8);
+}
+
+.radio:checked::before {
+  transform: scale(1);
+}
+
+ 

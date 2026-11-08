@@ -1,0 +1,72 @@
+.main{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    max-width: 1800px;
+    
+}
+
+.header{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.header{
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.close{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.mainmodal{
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    border-radius: 5px;
+    background-color: rgba(225, 225, 225, 0.958);
+    width: 90%;
+    max-width: 600px;
+
+}
+
+.text{
+    margin: 0;
+    padding: 10px;
+    border: 1px black solid;
+    width: 100%;
+}
+
+.box{
+    margin:20px;
+    padding: 0;
+    width: 95%;
+ 
+}
+.block{
+    margin: 0;
+    padding: 0;
+}
+.star{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}

@@ -1,0 +1,97 @@
+.btn {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* круг */
+.inner {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* слои */
+.top,
+.bottom {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  color: white;
+
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* верх */
+ 
+.name{
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+/* низ */
+.bottom {
+  transform: translateY(100%);
+  border-radius: 50%;
+}
+
+ 
+
+.btn:hover .bottom {
+  transform: translateY(0);
+  
+}
+
+/* tooltip */
+.tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+
+  transform: translate(-50%, -40px);
+  opacity: 0;
+
+  background: rgba(31, 30, 30, 0.8);
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+
+  white-space: nowrap;
+  pointer-events: none;
+
+  transition: all 0.8s ease;
+  transition-delay: 0.05s;
+}
+
+.btn:hover .tooltip {
+  transform: translate(-50%, -10px);
+  opacity: 1;
+}
+
+/* стрелка */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border: 6px solid transparent;
+  border-top-color: #111;
+}

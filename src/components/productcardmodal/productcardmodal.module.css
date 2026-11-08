@@ -1,0 +1,149 @@
+.mainbox {
+  width: min(1000px, 90vw);
+  max-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.qty {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.qtycol {
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.namebox {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.imageBox {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.imgbox {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.descbox {
+  margin: 0;
+  padding: 20px;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  line-height: 1.8rem;
+  position: relative;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.qty span {
+  min-width: 20px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.promoline {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color: rgb(235, 231, 230);
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgba(218, 78, 13, 0.5);
+  transform: rotate(90);
+  z-index: 100;
+}
+
+.priceRow {
+  font-size: 1.5rem;
+}
+
+.oldPrice {
+  font-size: 1rem;
+  text-decoration: line-through 4px rgb(218, 78, 13);
+}
+.newPrice {
+  color: rgb(218, 78, 13);
+  margin-left: 20px;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1000px) {
+  .mainbox {
+    width: min(500px, 90vw);
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .descbox {
+    padding: 10px;
+  }
+  .close {
+    background-color: white;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .qty {
+    padding: 5px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .mainbox {
+    padding: 10px;
+  }
+  .descbox {
+    padding: 5px;
+  }
+}

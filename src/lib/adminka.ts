@@ -1,0 +1,1 @@
+export const freeshipping = 50

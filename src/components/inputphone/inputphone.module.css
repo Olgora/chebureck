@@ -1,0 +1,41 @@
+.main {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: text;
+  pointer-events: none;
+  
+  /* Исходное положение по умолчанию (внутри строки) */
+  top: 10px; 
+  opacity: 1;
+  
+  /* Плавное перемещение и уменьшение шрифта */
+  transition: top 0.25s ease-in-out, font-size 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+/* 
+  Если инпут внутри .main в фокусе, автозаполнен или содержит текст:
+  -> плавно сдвигаем лейбл наверх над строчкой
+*/
+.main:has(.input:focus) .label,
+.main:has(.input:-webkit-autofill) .label,
+.main:has(.input:not(:placeholder-shown)) .label {
+  top: -16px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Убираем фирменное синее закрашивание автозаполнения Chrome/Safari */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover, 
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: currentColor !important; 
+}

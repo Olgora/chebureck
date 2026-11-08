@@ -1,0 +1,27 @@
+.container {
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 1rem; /* аналог Tailwind gap-8 (2rem = 32px) */
+  width: max-content; /* чтобы flex не пытался сжать контент в пределах контейнера */
+}
+
+@media (max-width: 990px) {
+  .row {
+    gap: 1.25rem; /* на мобильном элементы плотнее — иначе бегущая строка
+                     кажется слишком разреженной на узком экране */
+  }
+}
+
+@media (max-width: 640px) {
+  .row {
+    gap: 1.25rem; /* на мобильном элементы плотнее — иначе бегущая строка
+                     кажется слишком разреженной на узком экране */
+  }
+}

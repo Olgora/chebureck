@@ -1,0 +1,237 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100vh;
+  height: 100dvh; /* учитывает мобильную адресную строку, не даёт контенту прыгать */
+  background: white;
+  z-index: 1505;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.main {
+  margin: 0;
+  padding: 16px;
+  position: relative; /* было fixed поверх уже fixed .drawer — избыточно и конфликтно */
+  width: 100%;
+  height: 100%;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: transparent;
+  overflow-y: auto; /* весь drawer скроллится, если контента больше высоты экрана */
+  box-sizing: border-box;
+}
+
+.close {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.title {
+  margin: auto;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.block {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 2px black solid;
+}
+
+.empty {
+  color: #6b7280;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-bottom: 2px black solid;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.itemtitle {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 1.0rem;
+  font-weight: 700;
+}
+
+.imageWrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  border: 4px rgb(233, 190, 74) solid;
+  text-transform: uppercase;
+  flex-shrink: 0; /* картинка не сжимается, если места не хватает */
+}
+
+.list {
+  margin: 10px 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.box {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px; /* было 10% — на узком drawer давало слишком маленький зазор */
+  font-size: 1rem;
+  font-weight: 100;
+   
+}
+
+.boxs {
+  margin: 0;
+  padding: 0;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+   
+}
+
+.col {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ 
+   
+}
+
+.removeBtn {
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.7rem;
+}
+
+.footer {
+  width: 100%;
+}
+
+.total {
+  margin: 16px 0;
+  text-transform: uppercase;
+  font-size: 1.0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.itemcol {
+  margin: 0;
+  padding: 10px;
+  min-width: 50px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+/* ===== Мобильная адаптация ===== */
+@media (max-width: 990px) {
+  .drawer {
+    width: 100%;
+    max-width: 480px; /* планшеты: drawer не растягивается на весь экран */
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer {
+    width: 100vw;
+    max-width: 100vw; /* телефон: полноэкранная корзина, а не узкая полоска */
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .itemtitle {
+    font-size: 1.2rem;
+  }
+
+  .imageWrap {
+    width: 90px;
+    height: 90px;
+  }
+
+  .box {
+    gap: 12px;
+  }
+
+  .itemcol {
+    width: auto;
+    height: 40px;
+    padding: 6px;
+  }
+
+  .total {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .imageWrap {
+    width: 70px;
+    height: 70px;
+    border-width: 3px;
+  }
+
+  .itemtitle {
+    font-size: 1.05rem;
+  }
+}

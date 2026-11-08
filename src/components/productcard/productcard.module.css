@@ -1,0 +1,170 @@
+.main {
+  margin: 10px;
+  padding: 0;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  position: relative;
+   
+}
+
+/* 🔘 buttons overlay */
+.actions {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  display: flex;
+  gap: 8px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.btnPrimary {
+  background: black;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/*.modal {
+  width: 90%;
+  max-width: 1000px;
+  height: auto;
+  max-height: 90vh;
+  background: rgba(255, 255, 255, 0.92);
+  margin: 20px;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: pop 0.3s ease-out;
+}*/
+
+.modal {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mainbox {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.namebox {
+  margin: 0;
+  padding: 0;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.descbox {
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+
+  font-size: 1rem;
+  line-height: 2rem;
+}
+.imgbox {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.qty {
+  margin: auto;
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.qty span {
+  min-width: 20px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

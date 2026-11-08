@@ -1,0 +1,14 @@
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  width: max-content;
+}
+
+.slide {
+  flex: 0 0 auto;
+  padding: 0 10px;
+}

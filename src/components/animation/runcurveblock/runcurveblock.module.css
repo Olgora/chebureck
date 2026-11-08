@@ -1,0 +1,38 @@
+.wrap {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  /* когда svg станет шире контейнера — центрируем обрезку,
+     чтобы срезалось поровну с обеих сторон, а не только справа */
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 6px 12px rgba(104, 103, 103, 0.25));
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1400 / 200;
+}
+
+.text {
+  font-size: var(--fontsize, 32px);
+  letter-spacing: var(--letterspacing, 5px);
+}
+
+/* Ниже 900px ширины экрана волна больше не уменьшается:
+   держим её на "заморозке" на уровне размера при 900px,
+   а лишнее просто обрезается через overflow: hidden на .wrap */
+@media (max-width: 900px) {
+  .svg {
+    width: 900px;
+    flex-shrink: 0; /* на случай, если .wrap где-то окажется flex-элементом с сжатием */
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    letter-spacing: calc(var(--letterspacing, 5px) * 0.7);
+  }
+}

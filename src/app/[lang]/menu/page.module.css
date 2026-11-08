@@ -1,0 +1,131 @@
+
+.main {
+  margin: 0;
+  padding: 0;
+  margin-top: 60px;
+  width: calc(100% - 580px);
+  max-width:  1600px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:center;
+  gap: 20px;
+  position: relative;
+  align-items: flex-start;
+   
+}
+
+.pageWrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.bgWrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.list {
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  
+  
+}
+
+.cart {
+  margin: 0;
+  padding: 0;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position:fixed;
+  top: 60px;
+  right: 0;
+  z-index: 50;
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding:10px;
+}
+
+.footer{
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+
+@media (max-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 990px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+}
+
+@media (max-width: 750px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+     
+  }
+}
+
+
+@media (max-width: 990px) {
+  .main {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .list {
+    width: auto;
+     
+  }
+
+  /* На мобильных корзина открывается через плавающую кнопку и выезжающую шторку
+     (FloatingCartButton + CartDrawer в layout), поэтому закреплённая колонка не нужна
+     и только ломает раскладку на узких экранах. */
+  .cart {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .main {
+    margin-top: 50px;
+  }
+ .grid {
+   padding: 0;
+     
+  }
+}

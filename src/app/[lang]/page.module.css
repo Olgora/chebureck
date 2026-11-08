@@ -1,0 +1,281 @@
+.mainFon {
+  min-height: 100vh; /* Гарантируем высоту в полный экран */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mainBlock {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+
+.bgWrapper {
+  position: fixed;
+  left: 0;
+  top: -80px;
+  overflow: hidden;
+  pointer-events: none;
+ z-index: -2;
+  width: 100%;
+  height: 110vh;
+  
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+}
+
+.block {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  z-index: -5;
+  
+}
+.blockv {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+ 
+ 
+  box-sizing: border-box;
+   -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgb(52,57,61) 0%,
+    rgb(52,57,61)calc(100% - 40px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(52,57,61) 0%,
+    rgb(52,57,61) calc(100% - 40px),
+    transparent 100%
+  );
+}
+
+.blockl {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 50;
+  position: relative;
+  top: -10px;
+  z-index: 5;
+}
+
+.line {
+  margin: 0;
+  padding: 18px;
+  color: aliceblue;
+  font-size: 1.5rem;
+    
+  gap: 4rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  /*background: rgba(46, 46, 44, 0.8);*/
+  background-color: rgb(236, 142, 54);
+ 
+  clip-path: polygon(
+    0% 10%,
+    5% 0%,
+    10% 10%,
+    15% 0%,
+    20% 10%,
+    25% 0%,
+    30% 10%,
+    35% 0%,
+    40% 10%,
+    45% 0%,
+    50% 10%,
+    55% 0%,
+    60% 10%,
+    65% 0%,
+    70% 10%,
+    75% 0%,
+    80% 10%,
+    85% 0%,
+    90% 10%,
+    95% 0%,
+    100% 10%,
+    100% 90%,
+    95% 100%,
+    90% 90%,
+    85% 100%,
+    80% 90%,
+    75% 100%,
+    70% 90%,
+    65% 100%,
+    60% 90%,
+    55% 100%,
+    50% 90%,
+    45% 100%,
+    40% 90%,
+    35% 100%,
+    30% 90%,
+    25% 100%,
+    20% 90%,
+    15% 100%,
+    10% 90%,
+    5% 100%,
+    0% 90%
+  );
+}
+
+.linetext {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.container {
+  margin: 0;
+  padding: 0;   
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.containerhit {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+   
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.containerfix {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  overflow: hidden;
+}
+/* сама полоска */
+.bgStrip {
+  position: absolute;
+
+  inset: 0;
+  background: rgba(167, 224, 162, 0.3);
+
+  /* 🔥 главное */
+  clip-path: polygon(0% 35%, 100% 15%, 100% 45%, 0% 100%);
+
+  z-index: 0;
+}
+
+/* контент поверх */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.strip {
+  margin: 0;
+  padding: 0;
+  margin-top: 5%;
+  z-index: 5;
+}
+
+.linerun {
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(167, 224, 162, 0.8);
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 2;
+  text-transform: uppercase;
+  z-index: 4;
+  gap: 40px;
+  display: flex;
+  flex-direction: row;
+   
+}
+
+.linetop {
+  margin: 0;
+  height: 100px;
+  width: 100%;
+}
+
+.menu {
+  position: fixed;
+  top: 72vh;
+  right: 1vw;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  backdrop-filter: blur(
+    20px
+  ); /* размывает всё, что видно СКВОЗЬ этот полупрозрачный слой */
+  -webkit-backdrop-filter: blur(
+    8px
+  ); /* для Safari — без префикса не работает */
+  background-color: rgba(70, 68, 68, 0.4);
+  z-index: 1504;
+}
+
+
+
+@media (max-width: 990px) {
+  .line {
+    font-size: 1rem;
+    gap: 20px;
+  }
+
+  .linerun {
+    padding: 10px;
+    font-size: 1.5rem;
+    letter-spacing: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .line {
+    font-size: 1.3rem;
+  }
+  .menu {
+    width: 120px;
+    height: 120px;
+    top: 80vh;
+  }
+
+  .linetop {
+    height: 20px;
+  }
+
+   .linerun {
+    padding: 10px;
+    font-size: 1.2rem;
+    letter-spacing: 1;
+  }
+}

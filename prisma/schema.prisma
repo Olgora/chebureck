@@ -1,0 +1,244 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  name      String?
+  phone     String   @unique
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+  name_pt   String
+  name_en   String?
+   
+
+}
+
+model Product {
+  id             String         @id @default(cuid())
+  price          Decimal        @db.Decimal(10, 2)
+  isAvailable    Boolean        @default(true)
+  categoryId     String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  orderItems     OrderItem[]
+  category       Category       @relation(fields: [categoryId], references: [id])
+  images         ProductImage[]
+  name_pt        String
+  name_en        String?
+  productPromo   ProductPromo?
+  description_pt String?
+  description_en String?
+
+  // Доступные топпинги для данного товара
+  availableIngredients Ingredient[]
+  dailyStocks    DailyStock[]
+}
+
+
+model DailyStock {
+  id          String   @id @default(cuid())
+  productId   String
+  // Дата смены (рекомендуется нормализовать к 00:00:00 текущего дня)
+  date        DateTime @db.Date 
+  
+  // Сколько всего выделено/приготовлено на день (начальное + доработки)
+  totalAmount Int      @default(0)
+  
+  // Текущий доступный остаток (уменьшается при оформлении заказа)
+  available   Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  // Гарантируем, что на один продукт в конкретный день существует только одна запись
+  @@unique([productId, date])
+  @@index([date])
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  position  Int      @default(0)
+  isMain    Boolean  @default(false)
+  isThumbnail  Boolean @default(false)
+  productId String
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Ingredient {
+  id          String   @id @default(cuid())
+  name_pt     String
+  name_en     String?
+  price       Decimal  @db.Decimal(10, 2)
+  isAvailable Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // К каким товарам можно добавлять этот ингредиент (M:N)
+  products    Product[]
+  // Связь с позициями заказов
+  orderItems  OrderItemIngredient[]
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  customerId  String?
+  status      OrderStatus @default(PENDING)
+  totalPrice  Decimal @db.Decimal(10, 2)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  scheduledAt DateTime
+  delivery    Delivery?
+  customer    Customer?   @relation(fields: [customerId], references: [id])
+  items       OrderItem[]
+  payment     Payment?
+  massage     String?
+  lang String @default("pt")
+  
+}
+
+model OrderItem {
+  id          String                @id @default(cuid())
+  orderId     String
+  productId   String
+  quantity    Int
+  price       Decimal               @db.Decimal(10, 2) // Базовая цена продукта на момент заказа
+  createdAt   DateTime              @default(now())
+  order       Order                 @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product               @relation(fields: [productId], references: [id])
+  
+  // Выбранные доп. ингредиенты к позиции
+  ingredients OrderItemIngredient[]
+}
+
+model OrderItemIngredient {
+  id           String     @id @default(cuid())
+  orderItemId  String
+  ingredientId String
+  price        Decimal    @db.Decimal(10, 2) // Фиксируем цену ингредиента на момент оформления заказа
+  
+  orderItem    OrderItem  @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+
+  @@unique([orderItemId, ingredientId])
+}
+
+model Payment {
+  id        String        @id @default(cuid())
+  orderId   String        @unique
+  method    PaymentMethod
+  status    PaymentStatus @default(PENDING)
+  amount    Decimal @db.Decimal(10, 2)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  order     Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Delivery {
+  id        String         @id @default(cuid())
+  orderId   String         @unique
+  method    DeliveryMethod
+  address   String?
+  status    DeliveryStatus @default(PENDING)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+
+model Review {
+  id         String   @id @default(cuid())
+  name       String
+  phone      String
+  rating     Int
+  comment    String?
+  isVerified Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+// Модель для регулярных акций по дням недели
+model WeeklyPromo {
+  id          String   @id @default(uuid())
+  dayOfWeek   Int      // 0 = Воскресенье, 1 = Понедельник, 2 = Вторник и т.д.
+  isActive    Boolean  @default(true)
+  promoPrice  Decimal  @db.Decimal(10, 2) // Фиксированная цена на все чебуреки (например, 3.50)
+  updatedAt   DateTime @updatedAt
+}
+
+// Модель для промокодов и купонов
+model Coupon {
+  id          String   @id @default(uuid())
+  code        String   @unique // Сам промокод, например "CRUNCH"
+  type        String   // "PERCENT" (в процентах) или "FIXED" (в евро)
+  value       Decimal  @db.Decimal(10, 2) // Размер скидки (например, 10.00 или 5.00)
+  isActive    Boolean  @default(true)
+  expiryDate  DateTime? // Можно задать дату, когда купон автоматически сгорит
+  createdAt   DateTime @default(now())
+}
+
+model ProductPromo {
+  id           String   @id @default(uuid())
+  productId    String   @unique // Связь «один-к-одному» с продуктом (на один продукт — одна активная скидка)
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  type         String   // "PERCENT" (например, -20%) или "FIXED" (новая фиксированная цена, например, 3.80)
+  value        Decimal  @db.Decimal(10, 2)
+  
+  isActive     Boolean  @default(true)
+  updatedAt    DateTime @updatedAt
+}
+
+
+
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  COOKING
+  READY
+  DELIVERING
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+  ONLINE
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum DeliveryMethod {
+  PICKUP
+  DELIVERY
+}
+
+enum DeliveryStatus {
+  PENDING
+  ON_THE_WAY
+  DELIVERED
+}

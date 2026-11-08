@@ -1,0 +1,11 @@
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  width: max-content;
+  user-select: none;
+  touch-action: pan-y; /* 👈 важно для мобильных */
+}

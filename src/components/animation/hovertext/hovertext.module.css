@@ -1,0 +1,50 @@
+.hovericon {
+  width: auto;
+  display: inline-block; /* Чтобы контейнер сжимался строго под размер текста */
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.tooltip {
+  position: absolute;
+  /* 🌟 Центрируем подсказку относительно текста */
+  left: 50%;
+  bottom: 100%; /* Размещаем СВЕРХУ над текстом */
+  transform: translate(-50%, 10px); /* Изначально немного опущена вниз для анимации */
+  
+  opacity: 0;
+  background: rgba(38, 34, 32, 0.95); /* Твой фирменный брутальный темный */
+  border: 1px solid #fff; /* Белая тонкая рамка */
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+
+  white-space: nowrap;
+  pointer-events: none;
+
+  /* Плавный сочный переход */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.2s ease;
+}
+
+/* 🌟 ИСПРАВЛЕНО: Теперь ховер срабатывает на правильный класс .hovericon */
+.hovericon:hover .tooltip {
+  transform: translate(-50%, -8px); /* Плавно поднимается наверх над текстом */
+  opacity: 1;
+}
+
+/* Эффектная стрелочка снизу подсказки */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Направлена вниз */
+  left: 50%;
+  transform: translateX(-50%);
+
+  border: 6px solid transparent;
+  border-top-color: #262220; /* Цвет должен совпадать с фоном подсказки */
+}
